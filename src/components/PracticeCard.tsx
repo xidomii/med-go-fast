@@ -59,10 +59,10 @@ const PracticeCard = ({
         </div>
 
         <div className="flex gap-2 pt-2">
-          <Button variant="default" className="flex-1">
+          <Button variant="default" className="flex-1" onClick={() => alert("Terminbuchung kommt bald!")}>
             Termin buchen
           </Button>
-          <Button variant="outline" className="flex-1">
+          <Button variant="outline" className="flex-1" onClick={() => alert("Details anzeigen")}>
             Details
           </Button>
         </div>

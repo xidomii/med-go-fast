@@ -86,11 +86,11 @@ const Index = () => {
                 Bewertungen und direkter Terminbuchung. Schnell, einfach, transparent.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button variant="secondary" size="lg" className="shadow-glow">
-                  App herunterladen
+                <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => window.location.href = "/auth"}>
+                  Jetzt starten
                 </Button>
-                <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  Mehr erfahren
+                <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => window.location.href = "/practices"}>
+                  Praxen ansehen
                 </Button>
               </div>
             </div>
@@ -154,11 +154,11 @@ const Index = () => {
               Lade MediTime herunter und finde sofort die Praxis mit der kürzesten Wartezeit in deiner Nähe.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button variant="secondary" size="lg" className="shadow-glow">
-                Jetzt App herunterladen
+              <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => window.location.href = "/auth"}>
+                Jetzt registrieren
               </Button>
-              <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                Für Praxen registrieren
+              <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => window.location.href = "/practices"}>
+                Praxen entdecken
               </Button>
             </div>
           </div>
