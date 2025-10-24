@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { LogOut, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import PracticeDashboard from "@/components/PracticeDashboard";
+import PatientAppointments from "@/components/PatientAppointments";
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
@@ -86,23 +88,12 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          {profile?.role === "practice" && (
-            <Card className="p-6 bg-gradient-card">
-              <h2 className="text-2xl font-bold mb-4">Praxis-Dashboard</h2>
-              <p className="text-muted-foreground mb-4">
-                Verwalte deine Praxis, Wartezeiten und Termine hier.
-              </p>
-              <Button>Praxis verwalten</Button>
-            </Card>
+          {profile?.role === 'practice' && (
+            <PracticeDashboard practiceId={user?.id || ''} />
           )}
 
-          {profile?.role === "patient" && (
-            <Card className="p-6 bg-gradient-card">
-              <h2 className="text-2xl font-bold mb-4">Meine Termine</h2>
-              <p className="text-muted-foreground">
-                Du hast aktuell keine bevorstehenden Termine.
-              </p>
-            </Card>
+          {profile?.role === 'patient' && (
+            <PatientAppointments patientId={user?.id || ''} />
           )}
         </div>
       </main>

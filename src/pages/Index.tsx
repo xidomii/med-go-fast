@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Bell, Calendar, Clock, Users, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import PracticeCard from "@/components/PracticeCard";
 import FeatureCard from "@/components/FeatureCard";
 
 const Index = () => {
+  const navigate = useNavigate();
   const samplePractices = [
     {
+      id: "1",
       name: "Dr. med. Schmidt",
       specialty: "Allgemeinmedizin",
       address: "Hauptstraße 42, 10115 Berlin",
@@ -17,6 +20,7 @@ const Index = () => {
       openNow: true,
     },
     {
+      id: "2",
       name: "Praxis Dr. Müller",
       specialty: "Innere Medizin",
       address: "Berliner Straße 89, 10115 Berlin",
@@ -27,6 +31,7 @@ const Index = () => {
       openNow: true,
     },
     {
+      id: "3",
       name: "Medizinisches Zentrum",
       specialty: "HNO & Allgemeinmedizin",
       address: "Friedrichstraße 15, 10115 Berlin",
@@ -86,10 +91,10 @@ const Index = () => {
                 Bewertungen und direkter Terminbuchung. Schnell, einfach, transparent.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => window.location.href = "/auth"}>
+                <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => navigate("/auth")}>
                   Jetzt starten
                 </Button>
-                <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => window.location.href = "/practices"}>
+                <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => navigate("/practices")}>
                   Praxen ansehen
                 </Button>
               </div>
@@ -154,10 +159,10 @@ const Index = () => {
               Lade MediTime herunter und finde sofort die Praxis mit der kürzesten Wartezeit in deiner Nähe.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => window.location.href = "/auth"}>
+              <Button variant="secondary" size="lg" className="shadow-glow" onClick={() => navigate("/auth")}>
                 Jetzt registrieren
               </Button>
-              <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => window.location.href = "/practices"}>
+              <Button variant="outline" size="lg" className="bg-primary-foreground/10 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => navigate("/practices")}>
                 Praxen entdecken
               </Button>
             </div>

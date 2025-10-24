@@ -1,20 +1,24 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Star, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import WaitTimeIndicator from "./WaitTimeIndicator";
+import AppointmentBooking from "./AppointmentBooking";
 
 interface PracticeCardProps {
+  id: string;
   name: string;
   specialty: string;
   address: string;
   phone: string;
   rating: number;
   waitTime: number;
-  distance: string;
+  distance?: string;
   openNow: boolean;
 }
 
 const PracticeCard = ({
+  id,
   name,
   specialty,
   address,
@@ -24,6 +28,7 @@ const PracticeCard = ({
   distance,
   openNow,
 }: PracticeCardProps) => {
+  const navigate = useNavigate();
   return (
     <Card className="p-5 hover:shadow-soft transition-all duration-300 bg-gradient-card border-border">
       <div className="space-y-4">
@@ -38,7 +43,7 @@ const PracticeCard = ({
         <div className="space-y-2 text-sm">
           <div className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="w-4 h-4" />
-            <span>{address} • {distance}</span>
+            <span>{address}{distance ? ` • ${distance}` : ''}</span>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <Phone className="w-4 h-4" />
@@ -59,10 +64,10 @@ const PracticeCard = ({
         </div>
 
         <div className="flex gap-2 pt-2">
-          <Button variant="default" className="flex-1" onClick={() => alert("Terminbuchung kommt bald!")}>
-            Termin buchen
-          </Button>
-          <Button variant="outline" className="flex-1" onClick={() => alert("Details anzeigen")}>
+          <div className="flex-1">
+            <AppointmentBooking practiceId={id} practiceName={name} />
+          </div>
+          <Button variant="outline" className="flex-1" onClick={() => navigate(`/practices/${id}`)}>
             Details
           </Button>
         </div>

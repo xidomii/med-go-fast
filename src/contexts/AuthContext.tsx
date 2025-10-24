@@ -84,14 +84,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      // Erst den lokalen Zustand zurücksetzen
+      setUser(null);
+      setSession(null);
       
+      // Dann den Server-seitigen Logout versuchen
+      await supabase.auth.signOut();
+      
+      // Unabhängig vom Server-Ergebnis zur Startseite navigieren
       toast.success("Erfolgreich abgemeldet");
       navigate("/");
     } catch (error: any) {
-      toast.error(error.message || "Abmeldung fehlgeschlagen");
-      throw error;
+      // Selbst bei Fehlern wollen wir den Benutzer ausloggen
+      console.error("Logout error:", error);
+      toast.success("Abgemeldet");
+      navigate("/");
     }
   };
 

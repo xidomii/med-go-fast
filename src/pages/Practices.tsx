@@ -138,6 +138,7 @@ const Practices = () => {
           {practices.map((practice) => (
             <PracticeCard
               key={practice.id}
+              id={practice.id}
               name={practice.name}
               specialty={practice.specialty}
               address={`${practice.address}, ${practice.city}`}

@@ -14,7 +14,8 @@ const Auth = () => {
   const { signIn, signUp, user } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  
+  const searchParams = new URLSearchParams(window.location.search);
+  const defaultTab = searchParams.get('tab') === 'signup' ? 'signup' : 'login';
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [signupData, setSignupData] = useState({
     email: "",
@@ -57,7 +58,7 @@ const Auth = () => {
           <p className="text-muted-foreground">Wo du am schnellsten drankommst</p>
         </div>
 
-        <Tabs defaultValue="login" className="w-full">
+        <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="signup">Registrieren</TabsTrigger>
